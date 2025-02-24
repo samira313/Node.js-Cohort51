@@ -2,12 +2,13 @@
   "name": "hackyourtemperature",
   "version": "1.0.0",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "test": "jest",
     "start": "node server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "ahmadi.samira6761@gmail.com",
   "license": "ISC",
   "description": "",
   "dependencies": {

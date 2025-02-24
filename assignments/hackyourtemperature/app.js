@@ -1,6 +1,7 @@
-const express = require('express');	
-const keys = require('./sources/keys.js');	
-const fetch = require('node-fetch');
+import express from 'express';
+import fetch from 'node-fetch';
+import keys from './sources/keys.js';
+
 
 const app = express();
 
@@ -35,4 +36,4 @@ app.post('/weather', async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 });
-module.exports = app;
+export default app;

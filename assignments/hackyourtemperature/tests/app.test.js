@@ -1,6 +1,5 @@
-const request = require("supertest");
-const app = require("../app.js");
-
+import request from "supertest";
+import app from "../app.js";
 describe("POST /weather" , () => {
   it("should return weather data for a valid city", async () => {
     const response = await request(app)
