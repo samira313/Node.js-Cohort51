@@ -1,5 +1,8 @@
+// Import required modules for testing
 import request from "supertest";
 import app from "../app.js";
+
+// Define test suite for POST /weather route
 describe("POST /weather" , () => {
   it("should return weather data for a valid city", async () => {
     const response = await request(app)
