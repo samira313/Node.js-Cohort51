@@ -1,6 +1,6 @@
 // Import required modules for testing
 import request from "supertest";
-import app from "../app.js";
+import app from "./app.js";
 
 // Define test suite for POST /weather route
 describe("POST /weather" , () => {
@@ -10,8 +10,9 @@ describe("POST /weather" , () => {
      .send({ cityName: "London" });
 
     expect(response.status).toBe(200);
-    expect(response.body).toHaveProperty("cityName");
-    expect(response.body).toHaveProperty("temprature");
+    expect(response.body).toHaveProperty("temperature");
+    expect(response.body.temperature).toBeGreaterThan(-50);
+    expect(response.body.temperature).toBeLessThan(60);
   });
 
   it("should return an error for an invalid city", async () => {
@@ -20,7 +21,7 @@ describe("POST /weather" , () => {
      .send({ cityName: "InvalidCity" });
 
     expect(response.status).toBe(404);
-    expect(response.body.message).toContain("City");
+    expect(response.body).toHaveProperty("weatherText", "City is not found");
   });
 
   it("should return an error for an empty city", async () => {
@@ -29,7 +30,7 @@ describe("POST /weather" , () => {
      .send({ cityName: "" });
 
     expect(response.status).toBe(400);
-    expect(response.body).toHaveProperty("message", "City name is required");
+    expect(response.body).toHaveProperty("weatherText", "City name is required");
   });
 }); 
 
